@@ -1,0 +1,39 @@
+body {
+  background-color: black;
+}
+.divMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  font-size: 20px;
+}
+.describe {
+  font-size: 14px;
+  margin: 20px 0px;
+}
+.buttonBegin {
+  width: 190px;
+  height: 30px;
+  font-size: 15px;
+  background-color: rgb(235, 235, 98);
+  border-style: hidden;
+  border-radius: 15px;
+}
+.buttonBegin:hover {
+  background-color: rgb(139, 139, 6);
+  cursor: pointer;
+}
+@media screen and (min-width: 600px) {
+  .title {
+    font-size: 25px;
+  }
+  .describe {
+    font-size: 18px;
+  }
+  .buttonBegin {
+    font-size: 20px;
+    width: 220px;
+  }
+}
