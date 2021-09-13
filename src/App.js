@@ -15,29 +15,28 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
-  const player1Number = () => {
-    setPlayer1(characterList[Math.floor(Math.random() * 11)]);
-  };
-  const player2Number = () => {
-    const filter = characterList.filter((elem) => elem.house !== player1.house);
-    setPlayer2(filter[Math.floor(Math.random() * filter.length)]);
-  };
-  const player3Number = () => {
-    const filter1 = characterList.filter(
-      (elem) => elem.house !== player1.house
-    );
-    const filter2 = filter1.filter((elem) => elem.house !== player2.house);
-    setPlayer3(filter2[Math.floor(Math.random() * filter2.length)]);
-  };
-
   const handleClick = () => {
     getRandomPlayer();
     setInitialPage(false);
   };
   const getRandomPlayer = () => {
-    player1Number();
-    player2Number();
-    player3Number();
+    let jogador1 = characterList[Math.floor(Math.random() * 11)];
+    let jogador2 = characterList[Math.floor(Math.random() * 11)];
+    let jogador3 = characterList[Math.floor(Math.random() * 11)];
+
+    while (jogador1.house === jogador2.house) {
+      jogador2 = characterList[Math.floor(Math.random() * 11)];
+    }
+
+    while (
+      jogador3.house === jogador1.house ||
+      jogador2.house === jogador3.house
+    ) {
+      jogador3 = characterList[Math.floor(Math.random() * 11)];
+    }
+    setPlayer1(jogador1);
+    setPlayer2(jogador2);
+    setPlayer3(jogador3);
   };
   return (
     <div className="App-header">
